@@ -1,0 +1,3 @@
+﻿  main.cpp
+  C:\Users\dever\Documents\C++\Programming, Principles, and Practices\Ch. 9 - Technicalities, Classes, etc\Book Class\Book.h(107) : warning C4717: 'Library::operator<<': recursive on all control paths, function will cause runtime stack overflow
+  Book Class.vcxproj -> C:\Users\dever\Documents\C++\Programming, Principles, and Practices\Ch. 9 - Technicalities, Classes, etc\Book Class\Debug\Book Class.exe

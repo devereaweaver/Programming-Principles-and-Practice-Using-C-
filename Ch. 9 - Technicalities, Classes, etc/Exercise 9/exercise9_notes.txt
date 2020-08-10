@@ -1,0 +1,22 @@
+TO DO:
+* add a checkout_book function (will take some time) 
+	- fix error is adding a book to a transaction 
+
+* add an owes_fees() function (for all Patrons that owe fees) 
+
+=============================================================================
+* separate the add_patron()/add_book() functions
+    - meaning instead of the current implementation, maybe try passing a 
+      Book or Patron object as an argument that is already created
+    - call a Book/Patron constructor then just use the add_book()/add_patron()
+
+* think about adding a function that just prints the Genre::genr
+
+=============================================================================
+checkout_book():
+* report error if book or user doesn't exist 
+* check if user owes fees
+	- if user owes fees report error not allowing them to checkout the book
+	- if user doesn't owe fees, create a Transaction object that adds it to 
+	the vector (just call Library.add_transaction())
+* once transaction is completed, change the Book's status to checked out (true)

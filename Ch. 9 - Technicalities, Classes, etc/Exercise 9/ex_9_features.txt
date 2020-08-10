@@ -1,0 +1,4 @@
+"Features" for Library_System.h:
+* automatically assign user random card_num (check that it doesn' already exist) 
+* possibly create Date object from chapter and incorporate it into header
+* look up Patron or books
