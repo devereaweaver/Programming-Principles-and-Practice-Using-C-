@@ -1,0 +1,29 @@
+Reading type format:
+
+(day hour temp)
+	- day from 1 - 31
+	- hour from 0 - 23
+	- temp from -200 - +200
+
+example: (3 4 9.7) == 3rd day of month at 4am the temperature was 9.7 degrees F.
+
+struct Reading 
+{
+	int day;
+	int hour;
+	double temperature;
+};
+
+=======================================================================
+Subroutine 1: subroutine creates an ofstream object and output file 
+	- prompt user for name of output file 
+	- create ofstream object "connecting" to the output file 
+	- test ofstream
+	- if error, throw error and GTFOT
+	- if successful:
+		- prompt user for day number & store in a string/int?
+		- prompt user for hour number & store in a string/int?
+		- prompt user for temperature & store in a string/double?
+		- write the variables to file using the specified Reading format
+		- continue until user exits (specify value to exit subroutine) 	
+	- return to control to main

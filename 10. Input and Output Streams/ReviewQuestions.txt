@@ -1,0 +1,42 @@
+1) When dealing with input and output devices, most modern computer systems utilize device drivers that can be used to generalize the input/output.
+
+2) An istream creates an input stream that is "attached" to a particular file. It allows the computer to read a stream of sequential bytes. 
+
+3) An ostream create an output stream that is "attached" to a particualr file. It allows the computer to write a stream of sequential bytes. 
+
+4) A file is a sequence of bytes that are used to represent data. 
+
+5) A file format is a specification that tells the computer/user how to interpret the sequence of bytes that is a file. 
+
+6) Keyboard, mouse, monitor, printer?
+
+7) The four steps to reading a file are:
+	1. Create an istream object 
+	2. "Connect" the istream object to the file 
+	3. Do whatever processing
+	4. Close the file
+
+8) The four steps to writing a file are: 
+		1. Create an ostream object
+		2. "Connect" the ostream object to the output file 
+		3. Do whatever processing 
+		4. Close file	
+
+9) Name and define the four stream states. 
+	1. good() - occurs when the file read/write operation was successful 
+	2. eof() - stream has reached the EOF with no issues 
+	3. fail() - an error occured when reading the file stream, not fatal
+	4. bad() - very bad error occured, fatal. GTFOH of here. 
+
+10) Come back and do this one
+
+11) Input is usually more difficult than ouptut because you typically cannot control what the user will input. It can lead to unpredictable input which is hard to handle
+
+12) I'm not entirely sure, I feel as though input is infinitely more difficult that output. However, output can be difficult in that you have to figure out how to 
+   format the output, maybe?
+
+13) We often want to separate input and ouput from computation because these type of functions should not "hardwire" messages in them. 
+
+14) The clear() member function for the istream type is mostly used to clear the state of the error state flag
+
+15) Look this shits up later.
