@@ -39,4 +39,4 @@
 
 14) The clear() member function for the istream type is mostly used to clear the state of the error state flag
 
-15) Look this shits up later.
+** Some questions not answered, look up later.
