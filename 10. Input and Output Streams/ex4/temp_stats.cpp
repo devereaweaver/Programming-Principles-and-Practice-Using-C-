@@ -4,12 +4,14 @@
  * 
  * Primary Author: D'Anthony Weaver
  * Contributing Authors: N/A
- * Last Modified: 29 JUNE 2021
+ * Last Modified: 30 JUNE 2021
  *
  * Outline:
  *	[X] 1) Read values from a file into a vector
  *	[X] 2) Calculate the median of the temperatures in the data set
  *	[X] 3) Calculate the mean of the temperatures in the data set
+ *	[]  4) Exercise 4: test each temperature reading, convert Celsius to Fahrenheit before putting in vector
+ *
  */
 
 #include "../../std_lib_facilities.h"
@@ -45,6 +47,18 @@ int main()
 		if(lastChar!=')')				// test if last character is valid, MUST be ')'
 			error("Error: Bad last character!", lastChar);	// if not, error and bail on program
 
+		// TO DO: Convert temperature readings to fahrenheit before placing in temperatures vector if the reading 
+		// for the second to last value if 'c', if it is 'f' just put them in vector
+
+		/* Outline:
+		 *	- Read each value in the Reading object into necessary variable (int, int, double, char)
+		 *	- Test if char is 'f' or 'c' 
+		 *		- if 'c' then call function to convert to degrees Fahrenheit from degrees Celsius 
+		 *		  then add them to temperatures vector after conversion 
+		 *		- if 'f' then add to temperatures vector, doesn't need any conversion 
+		 *	- Process the vector in accordance with the rest of the program
+		 */
+		
 		// Add temps to temperatures vector
 		temperatures.push_back(temp);
 	}
