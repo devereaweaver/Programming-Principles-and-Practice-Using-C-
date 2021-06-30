@@ -17,8 +17,9 @@
 //================================================
 // Function Declaration(s)
 //================================================
-double calculateMean(vector<double>&);
-void displayVector(vector<double>&);
+double calculateMean(const vector<double>&);
+void displayVector(const vector<double>&);
+vector<double> sortVector(vector<double>&);	// needs to be changed
 
 //================================================
 // Main
@@ -56,13 +57,18 @@ int main()
 	std::cout << "\nTemperature mean: " << calculateMean(temperatures) 
 		  << std::endl;
 
+	// sort vector
+	vector<double> q = sortVector(temperatures);	// work with copy of array instead of original array
+	
+	// TO DO: Find vector median using copy of original temperatures vector
+
 	return 0;
 }
 
 //================================================
 // Function Definition(s)
 //================================================
-double calculateMean(vector<double>& v)
+double calculateMean(const vector<double>& v)
 {
 	/* calculateMean() -> calculates the mean value of a given vector
 	 * Args:
@@ -82,9 +88,52 @@ double calculateMean(vector<double>& v)
 };
 
 //------------------------------------------------
-void displayVector(vector<double>& v)
+void displayVector(const vector<double>& v)
 {
 	for(size_t i{}; i < v.size(); ++i)
 		std::cout << "Temp[" << i << "] = "
 			  << v[i] << std::endl;
+};
+
+//------------------------------------------------
+vector<double> sortVector(vector<double>& v)
+{
+	// implementation of bubble sort 
+
+	/* Bubble sort algorithm:
+	 * Do 
+	 *	Set a swap flag to false
+	 *	for loop to iterate over vector until next to last element
+	 *		if current element is greater than next element
+	 *		{
+	 *			Swap the two elements
+	 *			Set the swap flag to true since values were swapped
+	 *		}
+	 *		End if
+	 *	End for
+	 * While some elements have been swapped. Exit loop once values are in ascending order
+	 */
+
+	vector<double> c = v;
+
+	bool swap{};
+	double temp{};	// TO DO: consider creating a separate swap function later
+
+	do
+	{
+		swap = false; // need to set to false each time
+		for(size_t i{0}; i < c.size() - 1; ++i)
+		{
+			if(c[i] > c[i+1])
+			{
+				// SWAP
+				temp = c[i];	// temp variable
+				c[i] = c[i+1];	// current is equal to next 
+				c[i+1] = temp;	// next is equal to temp (current)
+				swap = true;
+			} 
+		} // end for
+	} while(swap);
+
+	return c;
 };
