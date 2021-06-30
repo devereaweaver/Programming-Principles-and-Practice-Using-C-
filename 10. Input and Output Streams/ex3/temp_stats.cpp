@@ -4,11 +4,11 @@
  * 
  * Primary Author: D'Anthony Weaver
  * Contributing Authors: N/A
- * Last Modified: 15 JUNE 2021
+ * Last Modified: 29 JUNE 2021
  *
  * Outline:
  *	[X] 1) Read values from a file into a vector
- *	[] 2) Calculate the median of the temperatures in the data set
+ *	[X] 2) Calculate the median of the temperatures in the data set
  *	[X] 3) Calculate the mean of the temperatures in the data set
  */
 
@@ -18,8 +18,9 @@
 // Function Declaration(s)
 //================================================
 double calculateMean(const vector<double>&);
+double calculateMedian(const vector<double>&);
 void displayVector(const vector<double>&);
-vector<double> sortVector(vector<double>&);	// needs to be changed
+vector<double> sortVector(vector<double>&);
 
 //================================================
 // Main
@@ -38,9 +39,6 @@ int main()
 	ifstream ist{inputFile};
 	if(!ist) error("Error: could not open input file", inputFile);
 
-	// TO DO: Read input until EOF is reached, starting here
-	// Read valid input data for processing
-	// WHY IS IT READING 4 TEMPS AND NOT 3??
 	while(ist>>firstChar && firstChar=='(')	
 	{
 		ist >> day >> hour >> temp >> lastChar;		// if good, read values into variables 
@@ -51,6 +49,7 @@ int main()
 		temperatures.push_back(temp);
 	}
 
+	std::cout << "Temperature Vector: " << std::endl;
 	displayVector(temperatures);
 
 	// calculate mean 
@@ -59,8 +58,11 @@ int main()
 
 	// sort vector
 	vector<double> q = sortVector(temperatures);	// work with copy of array instead of original array
+	std::cout << "\nSorted Temperature Vector: " << std::endl;
+	displayVector(q);
 	
 	// TO DO: Find vector median using copy of original temperatures vector
+	std::cout << "\nMedian: " << calculateMedian(q) << std::endl;
 
 	return 0;
 }
@@ -85,6 +87,43 @@ double calculateMean(const vector<double>& v)
 	mean = total/v.size();
 
 	return mean;
+};
+
+//------------------------------------------------
+double calculateMedian(const vector<double>& v)
+{
+	/* calculateMedian -> calculates median of a given vector
+	 * Args:
+	 *	- reference to vector of doubles 
+	 * Return:
+	 *	- median value
+	 */
+
+	/* Case 1: even number of elements
+	 *	- find middle two elements (size/2 and size/2 + 1)
+	 *	- add them 
+	 * 	- divide sum by two
+	 *	- return result
+	 * Case 2: odd number of element
+	 *	- return middle element (size//2 + 1)
+	 */
+
+	if(v.size() % 2 == 0)	// Case 1: even number of element
+	{
+		int x{}, y{}; 
+		double r{};
+		x = v.size()/2 - 1 ;	// position 1
+		y = v.size()/2;	// position 2
+		r = (v[x] + v[y]) / 2;
+		return r;
+	}
+	else 	// Case 2: odd number of elements
+	{
+		int x{};	
+		x = v.size()/2;	// go straight for middle 
+		return v[x];
+	}
+	
 };
 
 //------------------------------------------------
