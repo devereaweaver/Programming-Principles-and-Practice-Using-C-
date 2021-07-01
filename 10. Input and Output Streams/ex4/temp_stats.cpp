@@ -32,7 +32,7 @@ int main()
 	// Variable declarations 
 	vector<double> temperatures{}, days{}, hours{};	// vectors for input data
 	double temp{}, day{}, hour{};			// store each data read
-	char firstChar{}, lastChar{};			// for test first and last characters
+	char firstChar{}, lastChar{}, scale{};			// for test first and last characters
 	std::string inputFile{}, line{};			// name of file to be read
 
 	// Create input stream
@@ -43,7 +43,8 @@ int main()
 
 	while(ist>>firstChar && firstChar=='(')	
 	{
-		ist >> day >> hour >> temp >> lastChar;		// if good, read values into variables 
+		// TO DO: read temperature scale character into a char variable here
+		ist >> day >> hour >> temp >> scale >> lastChar;		// if good, read values into variables 
 		if(lastChar!=')')				// test if last character is valid, MUST be ')'
 			error("Error: Bad last character!", lastChar);	// if not, error and bail on program
 
@@ -58,6 +59,12 @@ int main()
 		 *		- if 'f' then add to temperatures vector, doesn't need any conversion 
 		 *	- Process the vector in accordance with the rest of the program
 		 */
+
+		if(scale == 'c')	// if current reading is using Celsius scale, then convert to Fahrenheit
+		{
+			//	F = (C * (9/5)) + 32
+			temp = (temp * (1.8)) + 32;
+		}
 		
 		// Add temps to temperatures vector
 		temperatures.push_back(temp);
@@ -72,7 +79,7 @@ int main()
 
 	// sort vector
 	vector<double> q = sortVector(temperatures);	// work with copy of array instead of original array
-	std::cout << "\nSorted Temperature Vector: " << std::endl;
+	std::cout << "\nSorted Temperature Vector (in degrees Farenheit): " << std::endl;
 	displayVector(q);
 	
 	// TO DO: Find vector median using copy of original temperatures vector
@@ -145,7 +152,7 @@ void displayVector(const vector<double>& v)
 {
 	for(size_t i{}; i < v.size(); ++i)
 		std::cout << "Temp[" << i << "] = "
-			  << v[i] << std::endl;
+			  << v[i] << " °F"<< std::endl;
 };
 
 //------------------------------------------------
